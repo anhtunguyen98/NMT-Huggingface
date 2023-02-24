@@ -1,11 +1,7 @@
 import numpy as np
-from transformers import AutoTokenizer
 from datasets import load_metric
 
 
-model_checkpoint = "facebook/mbart-large-50"
-
-tokenizer = AutoTokenizer.from_pretrained(model_checkpoint)
 
 metric = load_metric("utils/sacrebleu.py")
 
@@ -15,7 +11,7 @@ def postprocess_text(preds, labels):
 
     return preds, labels
 
-def compute_metrics(eval_preds):
+def compute_metrics(eval_preds,tokenizer):
     preds, labels = eval_preds
     if isinstance(preds, tuple):
         preds = preds[0]
