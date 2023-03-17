@@ -1,2 +1,3 @@
 data/*
 convert_data_to_json.py
+.DS_Store
